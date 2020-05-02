@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <h2> Start tracking for a suspect </h2>
+    </div>
+</div>
+
+<div style="display: flex;flex-direction: column;justify-content: center;text-align: center;">
+
+    <div class="mrgn1"><input class="mrgn" [(ngModel)]="userObj.firstName" nbInput placeholder="First Name" /> <input class="mrgn" nbInput [(ngModel)]="userObj.lastName" placeholder="Last Name" /></div>
+
+    <div class="mrgn1"><input class="mrgn" nbInput [(ngModel)]="userObj.age" placeholder="Age" /> <input class="mrgn" nbInput [(ngModel)]="userObj.gender" placeholder="Gender" /></div>
+
+    <div class="mrgn1"><input class="mrgn" nbInput [(ngModel)]="userObj.knownDiseases" placeholder="Known Diseases"/> <input class="mrgn" nbInput [(ngModel)]="userObj.contactNo" placeholder="Contact No" /></div>
+    <div class="mrgn1"><button class="mrgn" nbButton size="medium" status="info" (click)="submitDetails()" [disabled]="userObj.firstName == undefined || userObj.lastName == undefined || userObj.contactNo == undefined">Submit</button></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <hr> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <h2> List of suspects being tracked </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <table>
+            <tr>
+                <th>First name </th>
+                <th>Last name </th>
+                <th>Gender </th>
+                <th>Age </th>
+                <th>Contact no </th>
+                <th>Tracking Day </th>
+            </tr>
+            <tr *ngFor="let user of allUsersData">
+                <td>{{user.firstName}} </td>
+                <td>{{user.lastName}} </td>
+                <td>{{user.gender}} </td>
+                <td>{{user.age}} </td>
+                <td>{{user.contactNo}} </td>
+                <td>{{user.dayTrack}} </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <hr> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <h2> List of suspects raised alert </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align: center;">
+        <h5 *ngIf="!alertRaisedUsers?.length">No data to display</h5>
+        <table *ngIf="alertRaisedUsers?.length">
+            <tr>
+                <th>First name </th>
+                <th>Last name </th>
+                <th>Gender </th>
+                <th>Age </th>
+                <th>Contact no </th>
+            </tr>
+            <tr *ngFor="let user of alertRaisedUsers">
+                <td>{{user.firstName}} </td>
+                <td>{{user.lastName}} </td>
+                <td>{{user.gender}} </td>
+                <td>{{user.age}} </td>
+                <td>{{user.contactNo}} </td>
+            </tr>
+        </table>
+    </div>
+</div>
